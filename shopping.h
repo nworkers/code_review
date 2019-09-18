@@ -2,6 +2,7 @@
 #define SHOPPING_H_
 
 #include <vector>
+#include <functional>
 #include "./goods.h"
 
 // Shopping class presents List of shopping.
@@ -18,9 +19,12 @@ class Shopping{
   void PushList(Goods object);
   Goods GetLastElement();
   void PrintList();
+  static bool CompareByPrice(Goods &good1, Goods &good2);
+  static bool CompareByIndex(Goods &good1, Goods &good2);
   void SortByPrice();
   void SortByIndex();
-
+  
+  void Sort(std::function<bool(Goods &, Goods&)> comparer);
  private:
   std::vector<Goods> shopping_list_;
 };
